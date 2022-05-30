@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class tic_tac_toe {
 
+
     static Scanner sc = new Scanner(System.in);
 
     void uc1(char[] ch) {
@@ -14,6 +15,7 @@ public class tic_tac_toe {
 
     char uc2() {
         System.out.print("Enter X or O : ");
+
         return sc.next().charAt(0);
     }
 
@@ -21,9 +23,12 @@ public class tic_tac_toe {
         System.out.print("Enter desired position in the board : ");
         int position = sc.nextInt();
 
-        ch[position] = choice;
-        System.out.print(" " + ch[1] + " | " + ch[2] + " | " + ch[3] + " \n-----------\n " + ch[4] + " | " + ch[5] + " | " + ch[6] + " \n-----------\n " + ch[7] + " | " + ch[8] + " | " + ch[9] + " ");
-
+        if (ch[position] != ' ')
+            System.out.println("input choice is already occupied");
+        else {
+            ch[position] = choice;
+            System.out.print(" " + ch[1] + " | " + ch[2] + " | " + ch[3] + " \n-----------\n " + ch[4] + " | " + ch[5] + " | " + ch[6] + " \n-----------\n " + ch[7] + " | " + ch[8] + " | " + ch[9] + " ");
+        }
     }
 
     public static void main(String[] args) {
@@ -47,7 +52,6 @@ public class tic_tac_toe {
         }
 
         t1.showBoard(choice, ch);
-
 
     }
 }
