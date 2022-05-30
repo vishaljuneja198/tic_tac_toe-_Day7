@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class tic_tac_toe {
 
+    static Scanner sc = new Scanner(System.in);
+
     void uc1(char[] ch) {
         for (int i = 1; i < 10; i++) {
             ch[i] = ' ';
@@ -12,12 +14,16 @@ public class tic_tac_toe {
 
     char uc2() {
         System.out.print("Enter X or O : ");
-        Scanner sc = new Scanner(System.in);
         return sc.next().charAt(0);
     }
 
-    void showBoard(){
-        System.out.print("   |   |\n-----------\n   |   |\n-----------\n   |   |");
+    void showBoard(char choice, char ch[]) {
+        System.out.print("Enter desired position in the board : ");
+        int position = sc.nextInt();
+
+        ch[position] = choice;
+        System.out.print(" " + ch[1] + " | " + ch[2] + " | " + ch[3] + " \n-----------\n " + ch[4] + " | " + ch[5] + " | " + ch[6] + " \n-----------\n " + ch[7] + " | " + ch[8] + " | " + ch[9] + " ");
+
     }
 
     public static void main(String[] args) {
@@ -40,6 +46,8 @@ public class tic_tac_toe {
             choice2 = 'X';
         }
 
-        t1.showBoard();
+        t1.showBoard(choice, ch);
+
+
     }
 }
