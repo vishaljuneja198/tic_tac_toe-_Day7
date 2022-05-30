@@ -1,5 +1,7 @@
 package com.bridgelabz;
 
+import java.util.Random;
+
 import java.util.Scanner;
 
 public class tic_tac_toe {
@@ -14,6 +16,15 @@ public class tic_tac_toe {
     }
 
     char uc2() {
+
+        Random r = new Random();
+        int x = r.nextInt(2);
+
+        if (x==1)
+            System.out.println("User will start first");
+        else
+            System.out.println("Computer will start first");
+
         System.out.print("Enter X or O : ");
 
         return sc.next().charAt(0);
