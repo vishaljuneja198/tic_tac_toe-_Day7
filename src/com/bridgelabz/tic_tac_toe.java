@@ -1,7 +1,8 @@
 package com.bridgelabz;
+import java.util.Random;
 
+import java.util.Scanner;
 
-import jdk.swing.interop.SwingInterOpUtils;
 import java.util.Random;
 
 import java.util.Scanner;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 public class tic_tac_toe {
 
     static Scanner sc = new Scanner(System.in);
-    static char winnerName, turn;
+    static String turn;
     static boolean flag = true;
     static char ch[];
     static int loop = 0;
@@ -27,10 +28,10 @@ public class tic_tac_toe {
 
         if (x == 1) {
             System.out.println("User will start first");
-            turn = 'U';
+            turn = "User";
         } else {
             System.out.println("Computer will start first");
-            turn = 'C';
+            turn = "Computer";
         }
 
         System.out.print("Enter X or O : ");
@@ -71,18 +72,16 @@ public class tic_tac_toe {
 
             if (line.equals("XXX")) {
                 flag = false;
-                winnerName = 'X';
                 break;
             } else if (line.equals("OOO")) {
                 flag = false;
-                winnerName = 'O';
                 break;
             }
         }
         loop++;
         if (loop == 9) {
             if (flag != false)
-                winnerName = 'd';
+                turn = "draw";
             flag = false;
         }
     }
@@ -110,12 +109,12 @@ public class tic_tac_toe {
                 else
                     choice = 'X';
 
-                if (turn == 'U') {
+                if (turn == "User") {
                     System.out.print("\nIt's Computer's turn now, ");
-                    turn = 'C';
+                    turn = "Computer";
                 } else {
                     System.out.print("\nIt's User's turn now, ");
-                    turn = 'U';
+                    turn = "User";
                 }
             }
         }
@@ -127,16 +126,25 @@ public class tic_tac_toe {
         ch = new char[10];
 
         tic_tac_toe t1 = new tic_tac_toe();
-        t1.uc1(ch);
 
-        char choice = t1.uc2();
+        int i = 0;
 
-        t1.showBoard(choice);
+        while (i == 0) {
+            t1.uc1(ch);
 
-        if (winnerName != 'd')
-            System.out.println("\nThe Winner is " + winnerName);
-        else
-            System.out.println("\nThe game is drawn");
+            char choice = t1.uc2();
+
+            t1.showBoard(choice);
+
+            if (turn != "draw")
+                System.out.println("\nThe Winner is " + turn);
+            else
+                System.out.println("\nThe game is drawn");
+            System.out.println("Do you want to play again, enter y or n : ");
+            char c = sc.next().charAt(0);
+            if (c == 'n')
+                i = 1;
+        }
 
     }
 }
